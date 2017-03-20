@@ -31,8 +31,14 @@ describe Oystercard do
   end
 
   describe '#touch_in' do
-    it 'updates the journey status' do
+    it 'updates the journey status to true' do
       expect(oystercard.touch_in).to be_truthy
+    end
+  end
+
+  describe '#touch_out' do
+    it 'updates the journey status to false' do
+      expect(oystercard.touch_out).to be_falsy
     end
   end
 

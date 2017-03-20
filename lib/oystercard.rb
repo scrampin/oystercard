@@ -25,6 +25,10 @@ class Oystercard
     self.in_journey = true
   end
 
+  def touch_out
+    self.in_journey = false
+  end
+
 
   private
   attr_writer :balance, :in_journey
