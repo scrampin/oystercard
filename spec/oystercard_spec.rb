@@ -30,4 +30,10 @@ describe Oystercard do
     end
   end
 
+  describe '#touch_in' do
+    it 'updates the journey status' do
+      expect(oystercard.touch_in).to be_truthy
+    end
+  end
+
 end
