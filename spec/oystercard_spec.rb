@@ -5,7 +5,11 @@ describe Oystercard do
   subject(:oystercard) {described_class.new}
 
   it 'has a balance when created' do
-    expect(oystercard.balance).to be_instance_of(Fixnum)
+    expect(oystercard.balance).to eq 0
+  end
+
+  it 'is not in use when created' do
+    expect(oystercard).not_to be_in_journey
   end
 
   describe "#top_up" do
