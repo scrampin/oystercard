@@ -32,13 +32,23 @@ describe Oystercard do
 
   describe '#touch_in' do
     it 'updates the journey status to true' do
-      expect(oystercard.touch_in).to be_truthy
+      oystercard.top_up(2)
+      oystercard.touch_in
+      expect(oystercard).to be_in_journey
     end
+
+    it 'will not accept a card with a balance of less than 1' do
+      expect {oystercard.touch_in}.to raise_error "insufficient funds: you need at least #{Oystercard::MINIMUM_BALANCE}"
+    end
+
   end
 
   describe '#touch_out' do
     it 'updates the journey status to false' do
-      expect(oystercard.touch_out).to be_falsy
+      oystercard.top_up(2)
+      oystercard.touch_in
+      oystercard.touch_out
+      expect(oystercard).not_to be_in_journey
     end
   end
 
